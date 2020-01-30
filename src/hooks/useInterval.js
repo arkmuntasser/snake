@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 
 function useInterval(callback, delay) {
   const savedCallback = useRef();
@@ -7,7 +7,7 @@ function useInterval(callback, delay) {
     savedCallback.current = callback;
   }, [callback]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     function tick() {
       savedCallback.current();
     }
